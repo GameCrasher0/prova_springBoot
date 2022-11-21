@@ -6,6 +6,7 @@ import pedido.prova.api.entity.Order;
 import pedido.prova.api.repository.OrderRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "/pedido/v1/")
@@ -23,9 +24,9 @@ public class Controller {
 
     @GetMapping("{id}")
     @ResponseBody
-    public Optional<Order> getClienteById(@PathVariable Long id) {
-        Optional<Order> clienteReturned = orderRepository.findById(id);
-        return clienteReturned;
+    public Optional<Order> getOrderById(@PathVariable Long id) {
+        Optional<Order> orderReturned = orderRepository.findById(id);
+        return orderReturned;
     }
 
     @GetMapping
@@ -34,21 +35,21 @@ public class Controller {
     }
 
     @DeleteMapping("{id}")
-    public String deleteClienteById(@PathVariable Long id) {
+    public String deleteOrderById(@PathVariable Long id) {
         Optional<Order> clienteOptional = orderRepository.findById(id);
         if (clienteOptional.isPresent()) {
             orderRepository.deleteById(id);
-            return "Cliente de id " + id + " foi deletado com sucesso!";
+            return "Pedido de id " + id + " foi deletado com sucesso!";
         } else {
-            return "Cliente inexistente!";
+            return "Pedido inexistente!";
         }
     }
 
     @PutMapping("update/{id}")
-    public String updateClienteById(@PathVariable Long id, @RequestParam String novoNome) {
-        Optional<Order> clienteOptional = orderRepository.findById(id);
-        if (clienteOptional.isPresent()) {
-            Order c = clienteOptional.get();
+    public String updateOrderById(@PathVariable Long id, @RequestParam String novoNome) {
+        Optional<Order> orderOptional = orderRepository.findById(id);
+        if (orderOptional.isPresent()) {
+            Order c = orderOptional.get();
             orderRepository.save(c);
             return "Cliente de id" + id + " salvo com sucesso!";
         } else {
