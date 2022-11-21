@@ -1,10 +1,9 @@
 package pedido.prova.api.entity;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.List;
 
+@Entity
 public class Order {
 
     @Id
@@ -15,6 +14,7 @@ public class Order {
     private Long numero;
     private String formaPagamento;
     private Long parcelas;
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Items> items;
 
     public Order() {
