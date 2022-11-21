@@ -1,19 +1,24 @@
 package pedido.prova.api.entity;
 
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Table(name="order")
 public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Column(name = "ENDERECO")
     private String endereco;
     private String cep;
     private Long numero;
     private String formaPagamento;
     private Long parcelas;
+    @Column(name = "order_itens")
     @OneToMany(cascade = CascadeType.ALL)
     private List<Items> items;
 
