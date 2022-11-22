@@ -9,7 +9,7 @@ public class Pedido {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long orderId;
+    private Long pedidoId;
     @Column(name = "ENDERECO")
     private String endereco;
     private String cep;
@@ -33,7 +33,7 @@ public class Pedido {
     }
 
     public Long getOrderId() {
-        return orderId;
+        return pedidoId;
     }
 
     public String getEndereco() {

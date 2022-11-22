@@ -3,30 +3,29 @@ package pedido.prova.api.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name="itens")
 public class Items {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String nome;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private String nomeProduto;
     private Double precoIndividual;
     private Long quantidade;
 
     public Items() {
     }
 
-    public Items(String nome, Double precoIndividual, Long quantidade) {
-        this.nome = nome;
+    public Items(String nomeProduto, Double precoIndividual, Long quantidade) {
+        this.nomeProduto = nomeProduto;
         this.precoIndividual = precoIndividual;
         this.quantidade = quantidade;
     }
 
-    public String getNome() {
-        return nome;
+    public String getNomeProduto() {
+        return nomeProduto;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNomeProduto(String nomeProduto) {
+        this.nomeProduto = nomeProduto;
     }
 
     public Double getPrecoIndividual() {
