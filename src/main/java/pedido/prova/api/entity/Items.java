@@ -25,6 +25,10 @@ public class Items {
         this.quantidade = quantidade;
     }
 
+    public Long getId() {
+        return id;
+    }
+
     public String getNomeProduto() {
         return nomeProduto;
     }

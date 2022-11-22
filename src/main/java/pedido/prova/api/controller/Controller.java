@@ -45,13 +45,13 @@ public class Controller {
         }
     }
 
-    @PutMapping("/pedido/v1/{parcelas}/{id}")
+    @PutMapping("{parcelas}/{id}")
     public String updatePedidoById(@PathVariable Long id) {
         Optional<Pedido> pedidoOptional = pedidoRepository.findById(id);
         if (pedidoOptional.isPresent()) {
             Pedido c = pedidoOptional.get();
             pedidoRepository.save(c);
-            return "Pedido de id" + id + " salvo com sucesso!";
+            return "Pedido de id " + id + " salvo com sucesso!";
         } else {
             return "Pedido inexistente";
         }

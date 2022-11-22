@@ -31,7 +31,7 @@ public class Pedido {
         this.items = items;
     }
 
-    public Long getOrderId() {
+    public Long getPedidoId() {
         return pedidoId;
     }
 
