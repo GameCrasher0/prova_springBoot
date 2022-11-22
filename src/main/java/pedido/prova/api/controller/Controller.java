@@ -2,8 +2,8 @@ package pedido.prova.api.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import pedido.prova.api.entity.Order;
-import pedido.prova.api.repository.OrderRepository;
+import pedido.prova.api.entity.Pedido;
+import pedido.prova.api.repository.PedidoRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -13,32 +13,32 @@ import java.util.Optional;
 public class Controller {
 
     @Autowired
-    private OrderRepository orderRepository;
+    private PedidoRepository pedidoRepository;
 
     @PostMapping
     @ResponseBody
-    public Order create(@RequestBody Order order) {
-        Order orderSaved = orderRepository.save(order);
-        return orderSaved;
+    public Pedido create(@RequestBody Pedido pedido) {
+        Pedido pedidoSaved = pedidoRepository.save(pedido);
+        return pedidoSaved;
     }
 
     @GetMapping("{id}")
     @ResponseBody
-    public Optional<Order> getOrderById(@PathVariable Long id) {
-        Optional<Order> orderReturned = orderRepository.findById(id);
+    public Optional<Pedido> getPedidoById(@PathVariable Long id) {
+        Optional<Pedido> orderReturned = pedidoRepository.findById(id);
         return orderReturned;
     }
 
     @GetMapping
-    public List<Order> getAllClients() {
-        return orderRepository.findAll();
+    public List<Pedido> getAllClients() {
+        return pedidoRepository.findAll();
     }
 
     @DeleteMapping("{id}")
     public String deleteOrderById(@PathVariable Long id) {
-        Optional<Order> clienteOptional = orderRepository.findById(id);
+        Optional<Pedido> clienteOptional = pedidoRepository.findById(id);
         if (clienteOptional.isPresent()) {
-            orderRepository.deleteById(id);
+            pedidoRepository.deleteById(id);
             return "Pedido de id " + id + " foi deletado com sucesso!";
         } else {
             return "Pedido inexistente!";
@@ -46,14 +46,14 @@ public class Controller {
     }
 
     @PutMapping("update/{id}")
-    public String updateOrderById(@PathVariable Long id, @RequestParam String novoNome) {
-        Optional<Order> orderOptional = orderRepository.findById(id);
-        if (orderOptional.isPresent()) {
-            Order c = orderOptional.get();
-            orderRepository.save(c);
-            return "Cliente de id" + id + " salvo com sucesso!";
+    public String updatePedidoById(@PathVariable Long id) {
+        Optional<Pedido> pedidoOptional = pedidoRepository.findById(id);
+        if (pedidoOptional.isPresent()) {
+            Pedido c = pedidoOptional.get();
+            pedidoRepository.save(c);
+            return "Pedido de id" + id + " salvo com sucesso!";
         } else {
-            return "Cliente inexistente";
+            return "Pedido inexistente";
         }
     }
 }

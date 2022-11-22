@@ -1,17 +1,15 @@
 package pedido.prova.api.entity;
 
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name="order")
-public class Order {
+@Table(name="pedido")
+public class Pedido {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long orderId;
     @Column(name = "ENDERECO")
     private String endereco;
     private String cep;
@@ -22,10 +20,10 @@ public class Order {
     @OneToMany(cascade = CascadeType.ALL)
     private List<Items> items;
 
-    public Order() {
+    public Pedido() {
     }
 
-    public Order(String endereco, String cep, Long numero, String formaPagamento, Long parcelas, List<Items> items) {
+    public Pedido(String endereco, String cep, Long numero, String formaPagamento, Long parcelas, List<Items> items) {
         this.endereco = endereco;
         this.cep = cep;
         this.numero = numero;
@@ -34,8 +32,8 @@ public class Order {
         this.items = items;
     }
 
-    public Long getId() {
-        return id;
+    public Long getOrderId() {
+        return orderId;
     }
 
     public String getEndereco() {
