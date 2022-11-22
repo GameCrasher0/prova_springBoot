@@ -1,20 +1,25 @@
 package pedido.prova.api.entity;
 
-import javax.persistence.*;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 public class Items {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     private String nomeProduto;
-    private Double precoIndividual;
+    private Long precoIndividual;
     private Long quantidade;
 
     public Items() {
     }
 
-    public Items(String nomeProduto, Double precoIndividual, Long quantidade) {
+    public Items(String nomeProduto, Long precoIndividual, Long quantidade) {
         this.nomeProduto = nomeProduto;
         this.precoIndividual = precoIndividual;
         this.quantidade = quantidade;
@@ -28,11 +33,11 @@ public class Items {
         this.nomeProduto = nomeProduto;
     }
 
-    public Double getPrecoIndividual() {
+    public Long getPrecoIndividual() {
         return precoIndividual;
     }
 
-    public void setPrecoIndividual(Double precoIndividual) {
+    public void setPrecoIndividual(Long precoIndividual) {
         this.precoIndividual = precoIndividual;
     }
 

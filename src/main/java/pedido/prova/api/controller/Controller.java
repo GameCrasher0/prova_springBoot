@@ -29,7 +29,7 @@ public class Controller {
         return orderReturned;
     }
 
-    @GetMapping
+    @GetMapping("todos")
     public List<Pedido> getAllClients() {
         return pedidoRepository.findAll();
     }
@@ -45,7 +45,7 @@ public class Controller {
         }
     }
 
-    @PutMapping("update/{id}")
+    @PutMapping("/pedido/v1/{parcelas}/{id}")
     public String updatePedidoById(@PathVariable Long id) {
         Optional<Pedido> pedidoOptional = pedidoRepository.findById(id);
         if (pedidoOptional.isPresent()) {

@@ -10,7 +10,6 @@ public class Pedido {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long pedidoId;
-    @Column(name = "ENDERECO")
     private String endereco;
     private String cep;
     private Long numero;
